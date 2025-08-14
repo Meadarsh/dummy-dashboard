@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
@@ -8,7 +8,7 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 import { Activity, Eye, MousePointer, LogIn, LogOut } from "lucide-react"
 
 export function RealtimeActivityFeed() {
-  const [activities, _] = useState([
+  const [activities, setActivities] = useState([
     { id: 1, user: "John Doe", action: "viewed", target: "/dashboard", time: "2 seconds ago", type: "view" },
     { id: 2, user: "Jane Smith", action: "clicked", target: "Sign Up Button", time: "5 seconds ago", type: "click" },
     { id: 3, user: "Mike Johnson", action: "logged in", target: "", time: "12 seconds ago", type: "login" },
@@ -16,6 +16,23 @@ export function RealtimeActivityFeed() {
     { id: 5, user: "Tom Brown", action: "logged out", target: "", time: "25 seconds ago", type: "logout" },
   ])
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActivities((prevActivities) => {
+        const newActivities = [...prevActivities]
+        newActivities.push({
+          id: newActivities.length + 1,
+          user: "John Doe",
+          action: "viewed",
+          target: "/dashboard",
+          time: "2 seconds ago",
+          type: "view",
+        })
+        return newActivities
+      })
+    }, 5000)
+    return () => clearInterval(interval)
+  }, [])
   const getIcon = (type: string) => {
     switch (type) {
       case "view":
