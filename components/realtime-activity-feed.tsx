@@ -8,7 +8,7 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 import { Activity, Eye, MousePointer, LogIn, LogOut } from "lucide-react"
 
 export function RealtimeActivityFeed() {
-  const [activities, setActivities] = useState([
+  const [activities, _] = useState([
     { id: 1, user: "John Doe", action: "viewed", target: "/dashboard", time: "2 seconds ago", type: "view" },
     { id: 2, user: "Jane Smith", action: "clicked", target: "Sign Up Button", time: "5 seconds ago", type: "click" },
     { id: 3, user: "Mike Johnson", action: "logged in", target: "", time: "12 seconds ago", type: "login" },

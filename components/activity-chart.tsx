@@ -8,6 +8,7 @@ interface ActivityChartProps {
 }
 
 export function ActivityChart({ dateRange }: ActivityChartProps) {
+  console.log(dateRange)
   const data = [
     { time: "00:00", users: 1200, sessions: 1800, pageViews: 4200 },
     { time: "04:00", users: 800, sessions: 1200, pageViews: 2800 },

@@ -6,6 +6,7 @@ interface StatsCardsProps {
 }
 
 export function StatsCards({ dateRange }: StatsCardsProps) {
+  console.log(dateRange)
   const stats = [
     {
       title: "Total Users",
